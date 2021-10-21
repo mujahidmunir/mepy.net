@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+
+
+
+
 Route::get('record', [MasterController::class, 'record']);
 Route::get('creativa', [MasterController::class, 'creativa']);
 Route::get('management', [MasterController::class, 'management']);
