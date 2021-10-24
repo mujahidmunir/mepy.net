@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- Mirrored from mironmahmud.com/ushno/assets/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Oct 2021 06:33:34 GMT -->
-<!-- Added by HTTrack -->
+<html lang="id">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
@@ -17,16 +15,17 @@
         content="ushno, fm, bootstrap, html, template, mp3, player, radio station, responsive, schedule, shoutcast, online radio station template, radio station html template, radio station website template, mp3 player">
     <title>@stack('mytitle')</title>
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fontawesome-free-6.0.0-beta2-web/css/all.css') }}">
     @stack('mycss')
 </head>
 
 <body>
+
     <div class="back2top-btn"><a href="#"><i class="fas fa-long-arrow-alt-up"></i></a></div>
     @include('layouts.header')
 

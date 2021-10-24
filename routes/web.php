@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Landing\MasterController;
+use App\Http\Controllers\Landing\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +25,13 @@ Route::get('/login', function () {
 
 
 
-Route::get('record', [MasterController::class, 'record']);
-Route::get('creativa', [MasterController::class, 'creativa']);
-Route::get('management', [MasterController::class, 'management']);
-Route::get('entertainment', [MasterController::class, 'entertainment']);
-Route::get('profileTalent', [MasterController::class, 'profileTalent']);
+Route::get('record', [PageController::class, 'record']);
+Route::get('creativa', [PageController::class, 'creativa']);
+Route::get('talent-management', [PageController::class, 'management']);
+Route::get('entertainment', [PageController::class, 'entertainment']);
+Route::get('profileTalent', [PageController::class, 'profileTalent']);
+Route::get('contact-us', [PageController::class, 'contactUs']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

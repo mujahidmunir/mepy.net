@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="footer-logo"><a href="#"><img src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>
+                    <div class="footer-logo"><a href="#"><img src="{{ asset('assets/images/logo/mepy.png') }}" alt="logo"></a>
                         <ul>
                             <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -44,8 +44,7 @@
                             <li>
                                 <h5>available on -</h5>
                             </li>
-                            <li><a href="#"><img src="{{ asset('assets/img/google.png') }}" alt="google"></a></li>
-                            <li><a href="#"><img src="{{ asset('assets/img/app.png') }}" alt="app"></a></li>
+
                         </ul>
                     </div>
                 </div>
