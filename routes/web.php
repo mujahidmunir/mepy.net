@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Landing\PageController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,18 +15,13 @@ use App\Http\Controllers\Landing\PageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/login', function () {
     return view('auth.login');
 });
 
 
 
-
-
+Route::get('/', [PageController::class, 'index']);
 Route::get('record', [PageController::class, 'record']);
 Route::get('creativa', [PageController::class, 'creativa']);
 Route::get('talent-management', [PageController::class, 'management']);

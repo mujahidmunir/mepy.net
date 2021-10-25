@@ -19,6 +19,7 @@ class CreateSlidersTable extends Migration
             $table->string('description')->nullable();
             $table->string('image')->unique();
             $table->integer('status')->nullable();
+            $table->string('page', 30);
             $table->timestamps();
         });
     }

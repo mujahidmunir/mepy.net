@@ -14,33 +14,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="team-slider slider-arrow">
+                    @foreach ($client as $item)
                     <div class="team-card">
-                        <div class="team-img"><img src="{{asset('assets/images/lazada.png')}}" alt="team-1">
+                        <div class="team-img"><img src="{{asset('assets/images/'. $item->image)}}" alt="team-1">
                         </div>
                     </div>
-                    <div class="team-card">
-                        <div class="team-img"><img src="{{asset('assets/images/ruang guru.png')}}" alt="team-1">
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-img"><img src="{{asset('assets/images/bca.png')}}" alt="team-1">
-                        </div>
-                    </div>
-
-
-
-                    <div class="team-card">
-                        <div class="team-img"><img src="{{asset('assets/images/zalora.png')}}" alt="team-1">
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-img"><img src="{{asset('assets/images/media promo.png')}}" alt="team-1">
-                        </div>
-                    </div>
-
-
+                    @endforeach
 
                 </div>
             </div>
