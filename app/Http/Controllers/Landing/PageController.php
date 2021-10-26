@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Landing;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Client;
+use App\Models\Gallery;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -13,13 +14,17 @@ class PageController extends Controller
 
     function index()
     {
-        $data['slide']      = Slider::where('page', 'home')
+        $data['slide']   = Slider::where('page', 'home')
         ->whereStatus(1)
         ->get();
 
         $data['article'] = Article::whereStatus(1)->get();
 
         $data['client']  = Client::whereStatus(1)->get();
+        $data['talent']  = Gallery::whereStatus(1)
+        ->whereSrticleId(4)
+        ->get();
+
 
         return view('welcome', $data);
     }
@@ -38,7 +43,13 @@ class PageController extends Controller
 
     function management()
     {
-        $data = [];
+        $data['slide']   = Slider::where('page', 'talent')
+        ->whereStatus(1)
+        ->get();
+
+         $data['talent']  = Gallery::whereStatus(1)
+        ->whereSrticleId(4)
+        ->get();
         return view('landing.telent-management', $data);
     }
 

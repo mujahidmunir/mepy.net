@@ -9,7 +9,8 @@ TALENT MANAGEMENT
 @endpush
 
 @section('slide')
-<section class="single-banner">
+@foreach ($slide as $item)
+<section  style="background-image: url({{ URL::to('assets/images/slide/talent') }}/{{ $item->image }}); padding: 155px 0px 90px; background-position: center;   background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -24,179 +25,32 @@ TALENT MANAGEMENT
         </div>
     </div>
 </section>
+@endforeach
 @endsection
 
 @section('content')
 <section class="team-part">
     <div class="container">
         <div class="row">
-
+            @foreach ($talent as $item)
             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-5.jpg') }}" alt="team-5">
+                    <div class="team-img"><img src="{{ asset('assets/images/gallery/talent/'. $item->image) }}" alt="team-1">
                         <div class="team-overlay">
                             <ul class="team-icon">
                                 <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
+                        <h4>{{ $item->name }}</h4>
+                        <p>{{ $item->job }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-6.jpg') }}" alt="team-6">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-7.jpg') }}" alt="team-7">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-8.jpg') }}" alt="team-8">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-9.jpg') }}" alt="team-9">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-10.jpg') }}" alt="team-10">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-11.jpg') }}" alt="team-11">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/img/team-12.jpg') }}" alt="team-12">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-
-                                <li><a class="icon icon-inline" href="{{ url('profileTalent') }}"><i
-                                            class="fas fa-eye"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="team-meta">
-                        <h4>Miron Mahmud</h4>
-                        <p>Radio Jockey</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="team-btn"><a class="btn btn-outline" href="#"><i class="fas fa-eye"></i><span>show
-                            more</span></a></div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
