@@ -22,9 +22,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom/index.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome-free-6.0.0-beta2-web/css/all.css') }}">
     @stack('mycss')
+
+    <link rel="stylesheet" href="{{asset('assets/css/custom/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom/transitions.css')}}">
+
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar" data-offset="100">
 
     <div class="back2top-btn"><a href="#"><i class="fas fa-long-arrow-alt-up"></i></a></div>
     @include('layouts.header')
@@ -72,11 +76,20 @@
                 domain: "superpolis.solusiprimaselindo.com", // site domain
                 key: "1QRo1ZQ7TrWm8hWd-AenTw", // pro-widget key
             };
-            var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+            var proto = document.location.protocol,
+                host = "whatshelp.io",
+                url = proto + "//static." + host;
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () {
+                WhWidgetSendButton.init(host, proto, options);
+            };
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
         })();
+
     </script>
 
 </body>

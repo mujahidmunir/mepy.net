@@ -13,7 +13,7 @@
     <div class="container">
         @foreach ($article as $item)
         @if ($item->category_id == 2)
-        <div class="row mb-5">
+        <div class="row mb-5 animate__animated animate__backInRight animate__delay-5s">
             <div class="col-lg-12">
                 <div class="section-heading">
                     <h2>{{ $item->title }}</h2>

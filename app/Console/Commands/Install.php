@@ -5,6 +5,8 @@ namespace App\Console\Commands;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Client;
+use App\Models\Gallery;
+use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -57,7 +59,8 @@ class Install extends Command
         $this->createCategories();
         $this->createClient();
         $this->createArticles();
-
+        $this->createSliders();
+        $this->createTalents();
     }
 
     private function createUsers()
@@ -193,5 +196,165 @@ class Install extends Command
         Article::insert($articles);
     }
 
+    private function createSliders()
+    {
+        $sliders = [
+            [
+                'title'         => '-',
+                'description'   => '-',
+                'image'         => 'banner-1.jpg',
+                'status'        => 1,
+                'page'          => 'home',
+                'created_at'    => now(),
+                'updated_at'    => now()
+            ],
+            [
+                'title'         => '-',
+                'description'   => '-',
+                'image'         => 'banner-2.jpg',
+                'status'        => 1,
+                'page'          => 'home',
+                'created_at'    => now(),
+                'updated_at'    => now()
+            ],
+            [
+                'title'         => '-',
+                'description'   => '-',
+                'image'         => 'banner-3.jpg',
+                'status'        => 1,
+                'page'          => 'home',
+                'created_at'    => now(),
+                'updated_at'    => now()
+            ],
+            [
+                'title'         => '-',
+                'description'   => '-',
+                'image'         => 'banner.jpg',
+                'status'        => 1,
+                'page'          => 'talent',
+                'created_at'    => now(),
+                'updated_at'    => now()
+            ]
+
+        ];
+
+        Slider::insert($sliders);
+    }
+
+    private function createTalents()
+    {
+        $talents = [
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-1.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-2.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-3.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-4.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-5.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-6.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-7.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-8.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-9.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-10.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-11.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'srticle_id' => 4,
+                'name'       => '-',
+                'job'        => '-',
+                'image'      => 'image-12.jpg',
+                'status'     => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ];
+
+        Gallery::insert($talents);
+    }
 
 }

@@ -1,5 +1,5 @@
 <nav class="navbar-part">
-    <div class="navbar-bg">
+    <div class="navbar-bg animate__pulse">
         <div class="container">
             <div class="navbar-content"><a class="navbar-logo" href="{{url('/')}}"><img src="{{ asset('assets/images/logo/mepy.png') }}"
                         alt="logo"></a><button class="navbar-toggle" type="button"><i
