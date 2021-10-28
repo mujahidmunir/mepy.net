@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\ContactusController;
+use App\Http\Controllers\Admin\Account\UserController;
+use App\Http\Controllers\Admin\Config\ContactusController;
+use App\Http\Controllers\Admin\Config\SlideController;
 use App\Http\Controllers\Admin\CreativaController;
 use App\Http\Controllers\Admin\EntertainmentController;
 use App\Http\Controllers\Admin\RecordController;
@@ -44,5 +45,6 @@ Route::prefix('admin')->group(function() {
     Route::resource('talent', TalentController::class);
     Route::resource('entertainment', EntertainmentController::class);
     Route::resource('contactus', ContactusController::class);
-    Route::resource('user', AdminController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('slide', SlideController::class);
 });

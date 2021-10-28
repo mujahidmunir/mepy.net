@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Config;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ContactusController extends Controller
+class SlideController extends Controller
 {
     /**
      * Display a listing of the resource.

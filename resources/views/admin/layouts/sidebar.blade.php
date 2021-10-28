@@ -33,30 +33,42 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('admin/contactus') }}" class="{{ request()->is('admin/contactus') ? 'active' : '' }}">
-                <i class="fas fa-envelope"></i>
-                &nbsp;<span class="label">Contact Us</span>
+            <a href="#website" class="{{ request()->is('admin/contactus') || request()->is('admin/slide') ? 'active' : '' }}">
+                <i class="fas fa-cog"></i>
+                <span class="label">Config</span>
             </a>
-        </li>
-        <span>Account</span>
-        <li>
-            <a href="#users">
-                <i class="fas fa-users"></i>
-                <span class="label">Account</span>
-            </a>
-            <ul id="users">
+            <ul id="website">
                 <li>
-                    <a href="Misc.Player.html">
-                        <span class="label">Users</span>
+                    <a class="{{ request()->is('admin/slide') ? 'active' : '' }}" href="{{ url('admin/slide') }}">
+                        <span class="label">Slide</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Misc.Material.html">
-                        <span class="label">Role</span>
+                    <a href="{{ url('admin/contactus') }}" class="{{ request()->is('admin/contactus') ? 'active' : '' }}">
+                       <span class="label">Contact Us</span>
                     </a>
                 </li>
             </ul>
         </li>
-
+        @hasexactroles('super_admin')
+        <li>
+            <a href="#users" class="{{ request()->is('admin/user') || request()->is('admin/role') ? 'active' : '' }}">
+                <i class="fas fa-male"></i>
+                <span class="label">Account</span>
+            </a>
+            <ul id="users">
+                <li>
+                    <a class="{{ request()->is('admin/user') ? 'active' : '' }}" href="{{ url('admin/user') }}">
+                        <span class="label">Users</span>
+                    </a>
+                </li>
+                {{-- <li>
+                    <a class="{{ request()->is('admin/role') ? 'active' : '' }}" href="{{ url('admin/role') }}">
+                        <span class="label">Role</span>
+                    </a>
+                </li> --}}
+            </ul>
+        </li>
+        @endhasexactroles
     </ul>
 </div>
