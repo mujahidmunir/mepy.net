@@ -8,69 +8,34 @@
             </a>
             </li>
         <li>
-            <a class="{{ request()->is('record/list') ? 'active' : '' }}" href="#records">
+            <a class="{{ request()->is('admin/record') ? 'active' : '' }}" href="{{ url('admin/record') }}">
                 <i class="fas fa-record-vinyl"></i>
                 &nbsp;<span class="label"> Record</span>
             </a>
-            <ul id="records">
-                <li>
-                    <a class="{{ request()->is('record/list') ? 'active' : '' }}" href="{{ url('record/list') }}">
-                        <span class="label">List</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
-            <a class="{{ request()->is('creativa/list') ? 'active' : '' }}" href="#creativa">
+            <a class="{{ request()->is('admin/creativa') ? 'active' : '' }}"  href="{{ url('admin/creativa') }}">
                 <i class="fas fa-headphones-alt"></i>
                 &nbsp;<span class="label"> Creativa</span>
             </a>
-            <ul id="creativa">
-                <li>
-                    <a class="{{ request()->is('creativa/list') ? 'active' : '' }}" href="{{ url('creativa/list') }}">
-                        <span class="label">List</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
-            <a href="#talents" class="{{ request()->is('talents') ? 'active' : '' }}">
+            <a href="{{ url('admin/talent') }}" class="{{ request()->is('admin/talents') ? 'active' : '' }}">
                 <i class="fas fa-tasks"></i>
                  &nbsp;<span class="label">Talent</span>
             </a>
-            <ul id="talents">
-                <li>
-                    <a class="{{ request()->is('talents/list') ? 'active' : '' }}" href="{{ url('talent/list') }}">
-                        <span class="label">List</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
-            <a href="#entertainment" class="{{ request()->is('entertainment/list') ? 'active' : '' }}">
+            <a href="{{ url('admin/entertainment') }}" class="{{ request()->is('admin/entertainment') ? 'active' : '' }}">
                 <i class="fas fa-film"></i>
                 &nbsp;<span class="label">Entertainment</span>
             </a>
-            <ul id="entertainment">
-                <li>
-                    <a class="{{ request()->is('entertainment/list') ? 'active' : '' }}" href="{{ url('entertainment/list') }}">
-                        <span class="label">List</span>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
-            <a href="#contactus" class="{{ request()->is('contactus/list') ? 'active' : '' }}">
+            <a href="{{ url('admin/contactus') }}" class="{{ request()->is('admin/contactus') ? 'active' : '' }}">
                 <i class="fas fa-envelope"></i>
                 &nbsp;<span class="label">Contact Us</span>
             </a>
-            <ul id="contactus">
-                <li>
-                    <a class="{{ request()->is('contactus/list') ? 'active' : '' }}" href="{{ url('entertainment/list') }}">
-                        <span class="label">List</span>
-                    </a>
-                </li>
-            </ul>
         </li>
 
     </ul>
