@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/custom/animate.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/custom/transitions.css')}}">
 
+    <link rel="stylesheet" href="{{ asset('admin/css/sweetalert/sweetalert.css') }}">
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar" data-offset="100">
@@ -50,6 +51,7 @@
     <script src="{{ asset('assets/js/custom/venobox.js') }}"></script>
     <script src="{{ asset('assets/js/custom/player.js') }}"></script>
 
+    <script src="{{ asset('admin/js/sweetalert/sweetalert.js') }}"></script>
     @stack('myjs')
     <script src="{{ asset('assets/js/custom/main.js') }}"></script>
     <script type="text/javascript">

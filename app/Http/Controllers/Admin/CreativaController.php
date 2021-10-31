@@ -23,11 +23,14 @@ class CreativaController extends Controller
             return DataTables()->of($creativa)
                 ->addIndexColumn()
                 ->addColumn('action', function($creativa){
-                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$creativa->id.'" data-toggle="modal" data-target="#modelId" id="buton_edit"><i class="fas fa-edit"></i> Edit</a> '.
-                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$creativa->id.'" id="buton_hapus"><i class="fas fa-trash"></i> Hapus</a>';
+                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$creativa->id.'" data-bs-toggle="modal" data-bs-target="#editData" id="button_edit"><i class="fas fa-edit"></i> Edit</a> '.
+                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$creativa->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
+                })
+                ->addColumn('image', function($creativa){
+                    return '<img src="'.url('assets/images/gallery/creativa/', $creativa->image).'" class="img-thumbnail" alt="...">';
                 })
 
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'image'])
                 ->make(true);
         }
         return view('admin.creativa.index');
@@ -51,9 +54,9 @@ class CreativaController extends Controller
      */
     public function store(Request $request)
     {
-        $count = DB::table('v_creativa')->whereName($request->name)->count();
+        $count = DB::table('v_creativa')->whereName($request->name)->whereStatus(0)->count();
         if ($count > 0) {
-            return toast('creativas are available','warning');
+            return response()->json(['status' => 3], 201);
         }
 
         $data =  [
@@ -84,9 +87,9 @@ class CreativaController extends Controller
         }
 
         if ($creativa) {
-            alert()->success('Succeed','You have successfully added data');
+          return response()->json(['status' => 1], 201);
         } else {
-            alert()->danger('Fail', 'You failed to add data');
+            return response()->json(['status' => 2], 202);
         }
     }
 
@@ -110,7 +113,7 @@ class CreativaController extends Controller
     public function edit($id)
     {
         $creativa = Gallery::whereId($id)->first();
-        return view('admin.creativa.edit');
+        return response()->json($creativa);
     }
 
     /**
@@ -166,9 +169,9 @@ class CreativaController extends Controller
         $creativa->save();
 
         if ($creativa) {
-            alert()->success('Succeed','You have successfully added data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 }

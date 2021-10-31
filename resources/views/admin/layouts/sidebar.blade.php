@@ -20,7 +20,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('admin/talent') }}" class="{{ request()->is('admin/talents') ? 'active' : '' }}">
+            <a href="{{ url('admin/talent') }}" class="{{ request()->is('admin/talent') ? 'active' : '' }}">
                 <i class="fas fa-tasks"></i>
                 &nbsp;<span class="label">Talent</span>
             </a>
@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="#website" class="{{ request()->is('admin/contactus') || request()->is('admin/slide') ? 'active' : '' }}">
+            <a href="#website" class="{{ request()->is('admin/contactus') || request()->is('admin/slide') || request()->is('admin/categories') || request()->is('articles') || request()->is('clients')? 'active' : '' }}">
                 <i class="fas fa-cog"></i>
                 <span class="label">Config</span>
             </a>
@@ -48,6 +48,23 @@
                        <span class="label">Contact Us</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('admin/categories') }}" class="{{ request()->is('admin/categories') ? 'active' : '' }}">
+                       <span class="label">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/articles') }}" class="{{ request()->is('admin/articles') ? 'active' : '' }}">
+                       <span class="label">Articles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/clients') }}" class="{{ request()->is('admin/clients') ? 'active' : '' }}">
+                       <span class="label">Clients</span>
+                    </a>
+                </li>
+
+
             </ul>
         </li>
         @hasexactroles('super_admin')

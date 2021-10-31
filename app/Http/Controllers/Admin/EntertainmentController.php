@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic;
-use Alert;
 use App\Models\Gallery;
 class EntertainmentController extends Controller
 {
@@ -23,11 +22,15 @@ class EntertainmentController extends Controller
             return DataTables()->of($entertainment)
                 ->addIndexColumn()
                 ->addColumn('action', function($entertainment){
-                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$entertainment->id.'" data-toggle="modal" data-target="#modelId" id="buton_edit"><i class="fas fa-edit"></i> Edit</a> '.
-                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$entertainment->id.'" id="buton_hapus"><i class="fas fa-trash"></i> Hapus</a>';
+                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$entertainment->id.'" data-bs-toggle="modal" data-bs-target="#editData" id="button_edit"><i class="fas fa-edit"></i> Edit</a> '.
+                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$entertainment->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
                 })
 
-                ->rawColumns(['action'])
+                ->addColumn('image', function($creativa){
+                    return '<img src="'.url('assets/images/gallery/entertainment/', $creativa->image).'" class="img-thumbnail" alt="...">';
+                })
+
+                ->rawColumns(['action', 'image'])
                 ->make(true);
         }
         return view('admin.entertainment.index');
@@ -51,9 +54,9 @@ class EntertainmentController extends Controller
      */
     public function store(Request $request)
     {
-        $count = DB::table('v_entertainment')->whereName($request->name)->count();
+        $count = DB::table('v_entertainment')->whereName($request->name)->whereStatus(0)->count();
         if ($count > 0) {
-            return toast('entertainments are available','warning');
+            return response()->json(['status' => 3], 201);
         }
 
         $data =  [
@@ -84,10 +87,10 @@ class EntertainmentController extends Controller
         }
 
         if ($entertainment) {
-            alert()->success('Succeed','You have successfully added data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 
     /**
@@ -110,7 +113,7 @@ class EntertainmentController extends Controller
     public function edit($id)
     {
         $entertainment = Gallery::whereId($id)->first();
-        return view('admin.entertainment.edit');
+        return response()->json($entertainment);
     }
 
     /**
@@ -147,10 +150,10 @@ class EntertainmentController extends Controller
         }
 
         if ($entertainment) {
-            alert()->success('Succeed','You have successfully updated data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 
     /**
@@ -166,9 +169,9 @@ class EntertainmentController extends Controller
         $entertainment->save();
 
         if ($entertainment) {
-            alert()->success('Succeed','You have successfully added data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 }

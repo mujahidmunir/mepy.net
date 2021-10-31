@@ -21,14 +21,19 @@ class RecordController extends Controller
     {
         if (request()->ajax()) {
             $record = DB::table('v_record')->orderBy('id', 'DESC')->get();
+
             return DataTables()->of($record)
                 ->addIndexColumn()
                 ->addColumn('action', function($record){
-                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$record->id.'" data-toggle="modal" data-target="#modelId" id="buton_edit"><i class="fas fa-edit"></i> Edit</a> '.
-                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$record->id.'" id="buton_hapus"><i class="fas fa-trash"></i> Hapus</a>';
+                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$record->id.'" data-bs-toggle="modal" data-bs-target="#editData" id="button_edit"><i class="fas fa-edit"></i> Edit</a> '.
+                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$record->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
                 })
 
-                ->rawColumns(['action'])
+                ->addColumn('image', function($record){
+                    return '<img src="'.url('assets/images/gallery/record/', $record->image).'" class="img-thumbnail" alt="...">';
+                })
+
+                ->rawColumns(['action', 'image'])
                 ->make(true);
         }
         return view('admin.record.index');
@@ -52,16 +57,19 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        $count = DB::table('v_record')->whereName($request->name)->count();
+
+        $count = Gallery::whereName($request->name)
+        ->whereStatus(0)->count();
         if ($count > 0) {
-            return toast('Records are available','warning');
+           return response()->json(['status' => 3], 201);
         }
 
         $data =  [
             'srticle_id' => 2,
             'name'       => $request->name,
-            'job'        => null,
-            'status'     => 1
+            'job'        => 0,
+            'status'     => 1,
+            'image'      => 0
         ];
 
         $record = Gallery::create($data);
@@ -74,7 +82,7 @@ class RecordController extends Controller
             $upload_img = $image->resize(null, 900, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $upload_img->save(public_path("assets/images/gallery/record/thumb{$name}"), 80, 'png');
+            $upload_img->save(public_path("assets/images/gallery/record/thumb/{$name}"), 80, 'png');
 
             $file->move('assets/images/gallery/record/',$name);
 
@@ -85,10 +93,10 @@ class RecordController extends Controller
         }
 
         if ($record) {
-            alert()->success('Succeed','You have successfully added data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 
     /**
@@ -111,7 +119,7 @@ class RecordController extends Controller
     public function edit($id)
     {
         $record = Gallery::whereId($id)->first();
-        return view('admin.record.edit');
+        return response()->json($record);
     }
 
     /**
@@ -143,15 +151,15 @@ class RecordController extends Controller
 
 
              $record->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 
         if ($record) {
-            alert()->success('Succeed','You have successfully updated data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 
     /**
@@ -162,14 +170,14 @@ class RecordController extends Controller
      */
     public function destroy($id)
     {
-        $record = DB::table('v_record')->whereId($id)->first();
+        $record = Gallery::whereId($id)->first();
         $record->status = 0;
         $record->save();
 
         if ($record) {
-            alert()->success('Succeed','You have successfully added data');
-        } else {
-            alert()->danger('Fail', 'You failed to add data');
-        }
+            return response()->json(['status' => 1], 201);
+          } else {
+              return response()->json(['status' => 2], 202);
+          }
     }
 }

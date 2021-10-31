@@ -4,17 +4,27 @@
 
 <head>
     <meta charset="UTF-8">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>@stack('title')</title>
     <meta name="description" content="Acorn elearning platform dashboard.">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ asset('admin/img/favicon/apple-touch-icon-57x57.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('admin/img/favicon/apple-touch-icon-114x114.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('admin/img/favicon/apple-touch-icon-72x72.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('admin/img/favicon/apple-touch-icon-144x144.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{{ asset('admin/img/favicon/apple-touch-icon-60x60.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ asset('admin/img/favicon/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{{ asset('admin/img/favicon/apple-touch-icon-76x76.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ asset('admin/img/favicon/apple-touch-icon-152x152.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-57x57.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-114x114.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-72x72.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-144x144.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-60x60.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-120x120.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-76x76.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+        href="{{ asset('admin/img/favicon/apple-touch-icon-152x152.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('admin/img/favicon/favicon-196x196.png') }}" sizes="196x196">
     <link rel="icon" type="image/png" href="{{ asset('admin/img/favicon/favicon-96x96.png') }}" sizes="96x96">
     <link rel="icon" type="image/png" href="{{ asset('admin/img/favicon/favicon-32x32.png') }}" sizes="32x32">
@@ -40,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
     <script src="{{ asset('admin/js/base/loader.js') }}"></script>
     @stack('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/sweetalert/sweetalert.css') }}">
 </head>
 
 <body>
@@ -50,7 +61,7 @@
                 <div class="page-title-container">
                     <div class="row">
                         <div class="col-12 col-md-7">
-                         @yield('breadcrumbs')
+                            @yield('breadcrumbs')
                         </div>
                     </div>
                 </div>
@@ -91,21 +102,20 @@
     <script src="{{ asset('admin/js/vendor/autoComplete.min.js') }}"></script>
     <script src="{{ asset('admin/js/vendor/clamp.min.js') }}"></script>
     <script src="{{ asset('admin/js/vendor/glide.min.js') }}"></script>
-    <script src="{{ asset('admin/js/vendor/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/js/vendor/jquery.barrating.min.js') }}"></script>
     <script src="{{ asset('admin/font/CS-Line/csicons.min.js') }}"></script>
+    <script src="{{ asset('admin/js/sweetalert/sweetalert.js') }}"></script>
+    @stack('js')
     <script src="{{ asset('admin/js/base/helpers.js') }}"></script>
     <script src="{{ asset('admin/js/base/globals.js') }}"></script>
     <script src="{{ asset('admin/js/base/nav.js') }}"></script>
-    <script src="{{ asset('admin/js/base/search.js') }}"></script>
     <script src="{{ asset('admin/js/base/settings.js') }}"></script>
     <script src="{{ asset('admin/js/base/init.js') }}"></script>
     <script src="{{ asset('admin/js/cs/glide.custom.js') }}"></script>
-    <script src="{{ asset('admin/js/cs/charts.extend.js') }}"></script>
     <script src="{{ asset('admin/js/pages/dashboard.elearning.js') }}"></script>
     <script src="{{ asset('admin/js/common.js') }}"></script>
     <script src="{{ asset('admin/js/scripts.js') }}"></script>
-    @stack('js')
+
 </body>
 
 </html>
