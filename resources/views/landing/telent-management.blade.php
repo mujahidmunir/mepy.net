@@ -10,7 +10,8 @@ TALENT MANAGEMENT
 
 @section('slide')
 @foreach ($slide as $item)
-<section  style="background-image: url({{ URL::to('assets/images/slide/talent') }}/{{ $item->image }}); padding: 155px 0px 90px; background-position: center;   background-size: cover;">
+<section
+    style="background-image: url({{ URL::to('assets/images/slide/talent') }}/{{ $item->image }}); padding: 155px 0px 90px; background-position: center;   background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -29,31 +30,33 @@ TALENT MANAGEMENT
 @endsection
 
 @section('content')
-<section class="team-part">
-    <div class="container">
-        <div class="row">
-            @foreach ($talent as $item)
-            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                <div class="team-card team-gape">
-                    <div class="team-img"><img src="{{ asset('assets/images/gallery/talent/'. $item->image) }}" alt="team-1">
-                        <div class="team-overlay">
-                            <ul class="team-icon">
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="icon icon-inline" href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
-                        </div>
+
+@if (!empty($talent))
+@foreach ($talent as $item)
+<section class="section about-section" id="about">
+    <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+        <div class="container">
+            <div class="row align-items-center flex-row-reverse">
+                <div class="col-lg-6">
+                    <div class="about-text go-to">
+                        <h3 class="dark-color">{{ $item->title }}</h3>
+                        <br>
+                        <p style="text-align: justify">{!! html_entity_decode( \Illuminate\Support\Str::limit($item->description, 300) ) !!}</p>
+
                     </div>
-                    <div class="team-meta">
-                        <h4>{{ $item->name }}</h4>
-                        <p>{{ $item->job }}</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-avatar">
+                        <img src="{{ asset('assets/images/gallery/talent/'. $item->image) }}" class="img-fluid" style="width:200px; height:200px;" title="" alt="">
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </section>
+
+@endforeach
+@endif
 @endsection
 
 @push('myjs')

@@ -52,8 +52,9 @@
     <script src="{{ asset('assets/js/custom/player.js') }}"></script>
 
     <script src="{{ asset('admin/js/sweetalert/sweetalert.js') }}"></script>
-    @stack('myjs')
     <script src="{{ asset('assets/js/custom/main.js') }}"></script>
+
+    @stack('myjs')
     <script type="text/javascript">
         (function () {
             var options = {

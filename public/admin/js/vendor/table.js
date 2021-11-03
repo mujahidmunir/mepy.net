@@ -35,7 +35,7 @@
             deferRender: true,
             columns: [
                 {data: 'DT_RowIndex',           name: 'DT_RowIndex'},
-                {data: 'name',                  name: 'name'},
+                {data: 'title',                 name: 'title'},
                 {data: 'image',                 name: 'image'},
                 {data: 'action',                name: 'action', orderable: false, searchable: false},
             ]
@@ -77,7 +77,7 @@
             deferRender: true,
             columns: [
                 {data: 'DT_RowIndex',           name: 'DT_RowIndex'},
-                {data: 'name',                  name: 'name'},
+                {data: 'title',                  name: 'title'},
                 {data: 'image',                 name: 'image'},
                 {data: 'action',                name: 'action', orderable: false, searchable: false},
             ]
@@ -119,7 +119,7 @@
             deferRender: true,
             columns: [
                 {data: 'DT_RowIndex',           name: 'DT_RowIndex'},
-                {data: 'name',                  name: 'name'},
+                {data: 'title',                  name: 'title'},
                 {data: 'image',                 name: 'image'},
                 {data: 'action',                name: 'action', orderable: false, searchable: false},
             ]
@@ -161,7 +161,7 @@
             deferRender: true,
             columns: [
                 {data: 'DT_RowIndex',           name: 'DT_RowIndex'},
-                {data: 'name',                  name: 'name'},
+                {data: 'title',                  name: 'title'},
                 {data: 'image',                 name: 'image'},
                 {data: 'action',                name: 'action', orderable: false, searchable: false},
             ]

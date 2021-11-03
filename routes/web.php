@@ -26,6 +26,7 @@ Route::get('record', [PageController::class, 'record']);
 Route::get('creativa', [PageController::class, 'creativa']);
 Route::get('talent-management', [PageController::class, 'management']);
 Route::get('entertainment', [PageController::class, 'entertainment']);
+Route::get('entertainment/{articlesId}', [PageController::class, 'detail']);
 Route::get('profileTalent', [PageController::class, 'profileTalent']);
 Route::get('contact-us', [PageController::class, 'contactUs']);
 

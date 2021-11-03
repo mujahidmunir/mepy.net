@@ -8,7 +8,7 @@ use App\Models\Client;
 use App\Models\Gallery;
 use App\Models\Slider;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class PageController extends Controller
 {
 
@@ -31,7 +31,14 @@ class PageController extends Controller
 
     function record()
     {
-        $data = [];
+        $record = DB::table('v_record')->groupBy('srticle_id');
+        if ($record->count() > 0 ) {
+            $data['record'] = $record->get();
+            $data['gallery'] = Gallery::all();
+        } else {
+            $data['record'] = '';
+        }
+
         return view('landing.record', $data);
     }
 
@@ -47,15 +54,23 @@ class PageController extends Controller
         ->whereStatus(1)
         ->get();
 
-         $data['talent']  = Gallery::whereStatus(1)
-        ->whereSrticleId(4)
-        ->get();
+        $talent = DB::table('v_talent')->groupBy('srticle_id');
+        if ($talent->count() > 0 ) {
+            $data['talent'] = $talent->get();
+        } else {
+            $data['talent']  = '';
+        }
         return view('landing.telent-management', $data);
     }
 
     function entertainment()
     {
-        $data = [];
+        $entertainment = DB::table('v_entertainment')->groupBy('srticle_id');
+        if ($entertainment->count() > 0 ) {
+            $data['entertainment'] = $entertainment->get();
+        } else {
+            $data['entertainment']  = '';
+        }
         return view('landing.entertainment', $data);
     }
 
@@ -66,7 +81,17 @@ class PageController extends Controller
     }
 
     public function contactUs (){
-        return view ('landing.contact-us');
+        return view('landing.contact-us');
+    }
+
+    function detail($articlesId)
+    {
+        $id = base64_decode($articlesId);
+
+        $data['galleries'] = DB::table('v_entertainment')->where('srticle_id', $id)->get();
+        $data['articles'] = Article::whereId($id)->first();
+
+        return view('landing.entertainment-detail', $data);
     }
 }
 

@@ -16,8 +16,6 @@ class CreateGalleriesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->integer('srticle_id');
-            $table->string('name', 30);
-            $table->string('job', 30);
             $table->string('image');
             $table->integer('status');
             $table->timestamps();

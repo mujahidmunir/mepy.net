@@ -12,6 +12,7 @@
 <section class="section team-part">
     <div class="container">
         <div class="row">
+            @if (!empty($talent))
             @foreach ($talent as $item)
             <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="team-card team-gape">
@@ -25,12 +26,13 @@
                         </div>
                     </div>
                     <div class="team-meta">
-                        <h4>{{ $item->name }}</h4>
-                        <p>{{ $item->job }}</p>
+                        <h4>{{ $item->title }}</h4>
+                        <p style="text-align: justify">{!! html_entity_decode( \Illuminate\Support\Str::limit($item->description, 300) ) !!}</p>
                     </div>
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
         <div class="row">
             <div class="col-lg-12">

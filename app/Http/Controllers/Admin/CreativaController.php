@@ -27,7 +27,7 @@ class CreativaController extends Controller
                     '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$creativa->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
                 })
                 ->addColumn('image', function($creativa){
-                    return '<img src="'.url('assets/images/gallery/creativa/', $creativa->image).'" class="img-thumbnail" alt="...">';
+                    return '<img src="'.url('assets/images/gallery/creativa/', $creativa->image).'" style="width:200px; height: 200x;" class="img-thumbnail" alt="...">';
                 })
 
                 ->rawColumns(['action', 'image'])

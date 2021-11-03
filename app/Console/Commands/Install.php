@@ -60,7 +60,6 @@ class Install extends Command
         $this->createClient();
         $this->createArticles();
         $this->createSliders();
-        $this->createTalents();
     }
 
     private function createUsers()
@@ -241,120 +240,6 @@ class Install extends Command
         Slider::insert($sliders);
     }
 
-    private function createTalents()
-    {
-        $talents = [
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-1.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-2.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-3.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-4.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-5.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-6.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-7.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-8.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-9.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-10.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-11.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'srticle_id' => 4,
-                'name'       => '-',
-                'job'        => '-',
-                'image'      => 'image-12.jpg',
-                'status'     => 1,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ];
 
-        Gallery::insert($talents);
-    }
 
 }
