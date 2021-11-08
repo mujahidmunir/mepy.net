@@ -26,10 +26,18 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+
+                                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
                                     <i data-cs-icon="logout" class="me-2" data-cs-size="17"></i>
                                     <span class="align-middle">Logout</span>
                                 </a>
+
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
                             </li>
                         </ul>
                     </div>
@@ -53,6 +61,7 @@
         </ul>
         @include('admin.layouts.sidebar')
         <div class="mobile-buttons-container">
+
             <a href="#" id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
                 <i data-cs-icon="menu-dropdown"></i>
             </a>

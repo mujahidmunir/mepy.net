@@ -4,9 +4,13 @@
         <div class="col">
             <div class="row align-items-center">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
-                        required>
+                    <label for="exampleFormControlInput1" class="form-label">Artikel</label>
+                    <select class="js-example-basic-single form-control form-control-sm" name="srticle_id">
+                        <option value="">Pilih Salah Satu...</option>
+                        @foreach ($article as $item)
+                        <option value="{{ $item->id_articles }}">{{ $item->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="row align-items-center">

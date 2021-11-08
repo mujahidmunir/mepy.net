@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic;
 use Alert;
+use App\Models\Article;
 use App\Models\Gallery;
 class CreativaController extends Controller
 {
@@ -33,7 +34,9 @@ class CreativaController extends Controller
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-        return view('admin.creativa.index');
+
+        $data['article'] = $this->getArticleCreativa();
+        return view('admin.creativa.index', $data);
     }
 
     /**
@@ -58,12 +61,10 @@ class CreativaController extends Controller
         if ($count > 0) {
             return response()->json(['status' => 3], 201);
         }
-
-        $data =  [
-            'srticle_id' => 3,
-            'name'       => $request->name,
-            'job'        => null,
-            'status'     => 1
+        $data = [
+            'srticle_id' => $request->srticle_id,
+            'image'      => 0,
+            'status'     => 1,
         ];
 
         $creativa = Gallery::create($data);
@@ -82,15 +83,18 @@ class CreativaController extends Controller
 
 
              $creativa->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 
         if ($creativa) {
-          return response()->json(['status' => 1], 201);
+            return response()->json(['status' => 1], 201);
         } else {
             return response()->json(['status' => 2], 202);
         }
+
+
+
     }
 
     /**
@@ -127,7 +131,7 @@ class CreativaController extends Controller
     {
 
         $creativa = Gallery::whereId($id)->first();
-        $creativa->name = $request->name;
+        $creativa->srticle_id = $request->srticle_id;
         $creativa->save();
 
         if ($request->hasFile('image')) {
@@ -145,7 +149,7 @@ class CreativaController extends Controller
 
 
              $creativa->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 

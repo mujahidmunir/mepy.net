@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
     <script src="{{ asset('admin/js/base/loader.js') }}"></script>
     @stack('css')
+    <link rel="stylesheet" href="{{ asset('admin/css/vendor/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/sweetalert/sweetalert.css') }}">
 </head>
 
@@ -105,7 +106,7 @@
     <script src="{{ asset('admin/js/vendor/jquery.barrating.min.js') }}"></script>
     <script src="{{ asset('admin/font/CS-Line/csicons.min.js') }}"></script>
     <script src="{{ asset('admin/js/sweetalert/sweetalert.js') }}"></script>
-    @stack('js')
+    <script src="{{ asset('admin/js/vendor/select2.js') }}"></script>
     <script src="{{ asset('admin/js/base/helpers.js') }}"></script>
     <script src="{{ asset('admin/js/base/globals.js') }}"></script>
     <script src="{{ asset('admin/js/base/nav.js') }}"></script>
@@ -115,7 +116,12 @@
     <script src="{{ asset('admin/js/pages/dashboard.elearning.js') }}"></script>
     <script src="{{ asset('admin/js/common.js') }}"></script>
     <script src="{{ asset('admin/js/scripts.js') }}"></script>
-
+    @stack('js')
+    <script>
+    $(document).ready(function () {
+        $('.js-example-basic-single').select2();
+    });
+    </script>
 </body>
 
 </html>

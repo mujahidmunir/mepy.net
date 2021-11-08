@@ -4,13 +4,26 @@
         <div class="col">
             <div class="row align-items-center">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Artikel</label>
-                    <select class="js-example-basic-single form-control form-control-sm" name="srticle_id">
+                    <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                    <select class="js-example-basic-single form-control form-control-sm" name="category_id">
                         <option value="">Pilih Salah Satu...</option>
-                        @foreach ($article as $item)
-                        <option value="{{ $item->id_articles }}">{{ $item->title }}</option>
+                        @foreach ($category as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="title"
+                        required>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
+                    <textarea id="description" class="form-control" name="description" rows="10" cols="50"></textarea>
                 </div>
             </div>
 

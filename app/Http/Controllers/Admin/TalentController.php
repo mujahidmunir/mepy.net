@@ -34,7 +34,8 @@ class TalentController extends Controller
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-        return view('admin.talent.index');
+        $data['article'] = $this->getArticleTalent();
+        return view('admin.talent.index', $data);
     }
 
     /**
@@ -62,9 +63,7 @@ class TalentController extends Controller
         }
 
         $data =  [
-            'srticle_id' => 4,
-            'name'       => $request->name,
-            'job'        => null,
+            'srticle_id' => $request->srticle_id,
             'status'     => 1
         ];
 
@@ -84,7 +83,7 @@ class TalentController extends Controller
 
 
              $talent->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 
@@ -129,7 +128,7 @@ class TalentController extends Controller
     {
 
         $talent = Gallery::whereId($id)->first();
-        $talent->name = $request->name;
+        $talent->srticle_id = $request->srticle_id;
         $talent->save();
 
         if ($request->hasFile('image')) {
@@ -147,7 +146,7 @@ class TalentController extends Controller
 
 
              $talent->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 

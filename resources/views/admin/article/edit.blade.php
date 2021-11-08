@@ -12,22 +12,39 @@
                     @csrf
                     <div class="row mb-5">
                         <div class="col">
+
                             <div class="row align-items-center">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Artikel</label>
-                                    <select class="form-control form-control-sm" name="srticle_id" id="srticle_id_edit">
+                                    <label for="exampleFormControlInput1" class="form-label">Kategori</label>
+                                    <select class="form-control form-control-sm" name="category_id" id="category_id_edit">
                                         <option value="">Pilih Salah Satu...</option>
-                                        @foreach ($article as $item)
-                                        <option value="{{ $item->id_articles }}">{{ $item->title }}</option>
+                                        @foreach ($category as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="row align-items-center">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                                    <input type="text" class="form-control" id="title_edit" name="title"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
+                                    <textarea id="description_edit" class="form-control" name="description" rows="10" cols="50"></textarea>
+                                </div>
+                            </div>
+
                             <div class="row align-items-center">
                                 <div class="mb-3">
                                     <label for="formFileSm" class="form-label">Gambar</label>
                                     <input class="form-control form-control-sm" name="image" id="image_edit"
-                                        onchange="loadPreviewEdit(this);" accept="image/png, image/jpeg" type="file">
+                                        onchange="loadPreviewEdit(this);" accept="image/png, image/jpeg"
+                                        type="file" required>
                                 </div>
                             </div>
 
@@ -37,8 +54,8 @@
                             <div class="row align-items-center">
                                 <div class="mb-3">
                                     <img id="preview_img_edit"
-                                        src="https://www.w3adda.com/wp-content/uploads/2019/09/No_Image-128.png"
-                                        class="img-thumbnail" width="200" height="150" />
+                                    src="https://www.w3adda.com/wp-content/uploads/2019/09/No_Image-128.png"
+                                    class="img-thumbnail" width="200" height="150" />
                                 </div>
                             </div>
                         </div>

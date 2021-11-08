@@ -259,7 +259,7 @@ ADMIN | Entertainment
 
                     console.log(response);
                     $("#id_edit").val(response.id);
-                    $("#name_edit").val(response.name);
+                    $("#srticle_id_edit").val(response.srticle_id).change();
                     $("#preview_img_edit").attr('src',
                         `{{ asset('assets/images/gallery/entertainment/') }}/${response.image}`
                         );

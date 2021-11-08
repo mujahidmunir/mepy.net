@@ -18,13 +18,13 @@ class PageController extends Controller
         ->whereStatus(1)
         ->get();
 
-        $data['article'] = Article::whereStatus(1)->get();
+        $data['article'] = Article::whereStatus(1)
+        ->whereIn('id', [1, 2, 3, 4, 5])->get();
 
         $data['client']  = Client::whereStatus(1)->get();
         $data['talent']  = Gallery::whereStatus(1)
         ->whereSrticleId(4)
         ->get();
-
 
         return view('welcome', $data);
     }
@@ -44,7 +44,16 @@ class PageController extends Controller
 
     function creativa()
     {
-        $data = [];
+        $data['slide']   = Slider::where('page', 'creativa')
+        ->whereStatus(1)
+        ->get();
+
+        $creativa = DB::table('v_creativa')->groupBy('srticle_id');
+        if ($creativa->count() > 0 ) {
+            $data['creativa'] = $creativa->get();
+        } else {
+            $data['creativa']  = '';
+        }
         return view('landing.creativa', $data);
     }
 
@@ -80,7 +89,8 @@ class PageController extends Controller
         return view('landing.profileTalent', $data);
     }
 
-    public function contactUs (){
+    function contactUs ()
+    {
         return view('landing.contact-us');
     }
 

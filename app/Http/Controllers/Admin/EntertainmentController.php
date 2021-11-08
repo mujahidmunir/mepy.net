@@ -33,7 +33,8 @@ class EntertainmentController extends Controller
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-        return view('admin.entertainment.index');
+        $data['article'] = $this->getArticleEntertainment();
+        return view('admin.entertainment.index', $data);
     }
 
     /**
@@ -60,9 +61,7 @@ class EntertainmentController extends Controller
         }
 
         $data =  [
-            'srticle_id' => 5,
-            'name'       => $request->name,
-            'job'        => null,
+            'srticle_id' => $request->srticle_id,
             'status'     => 1
         ];
 
@@ -82,7 +81,7 @@ class EntertainmentController extends Controller
 
 
              $entertainment->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 
@@ -127,7 +126,7 @@ class EntertainmentController extends Controller
     {
 
         $entertainment = Gallery::whereId($id)->first();
-        $entertainment->name = $request->name;
+        $entertainment->srticle_id = $request->srticle_id;
         $entertainment->save();
 
         if ($request->hasFile('image')) {
@@ -145,7 +144,7 @@ class EntertainmentController extends Controller
 
 
              $entertainment->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 

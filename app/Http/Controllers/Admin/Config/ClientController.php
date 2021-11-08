@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin\Config;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic;
-use Alert;
-use App\Models\Slider;
-
-class SlideController extends Controller
+class ClientController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -20,28 +18,23 @@ class SlideController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $slide = DB::table('v_sliders')->orderBy('id', 'DESC')->get();
+            $clients = DB::table('v_clients')->orderBy('id', 'DESC')->get();
 
-            return DataTables()->of($slide)
+            return DataTables()->of($clients)
                 ->addIndexColumn()
-                ->addColumn('action', function($slide){
-                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$slide->id.'" data-bs-toggle="modal" data-bs-target="#editData" id="button_edit"><i class="fas fa-edit"></i> Edit</a> '.
-                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$slide->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
+                ->addColumn('action', function($clients){
+                    return '<a href="#" class="btn btn-squared btn-info mr-2 mb-2" data-id="'.$clients->id.'" data-bs-toggle="modal" data-bs-target="#editData" id="button_edit"><i class="fas fa-edit"></i> Edit</a> '.
+                    '<a href="#" class="btn btn-squared btn-danger mr-2 mb-2" data-id="'.$clients->id.'" id="button_delete"><i class="fas fa-trash"></i> Hapus</a>';
                 })
 
-                ->addColumn('description', function($slide){
-                    return '<p style="text-align: justify">"'.html_entity_decode($slide->description).'"</p>';
+                ->addColumn('image', function($clients){
+                    return '<img src="'.url('assets/images/', $clients->image).'" style="width:200px; height:200px;" class="img-thumbnail" alt="...">';
                 })
 
-
-                ->addColumn('image', function($slide){
-                    return '<img style="width:200px; height:200px;" src="'.url('assets/images/slide/', $slide->image).'" class="img-thumbnail" alt="...">';
-                })
-
-                ->rawColumns(['action', 'image', 'description'])
+                ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-        return view('admin.slide.index');
+        return view('admin.clients.index');
     }
 
     /**
@@ -51,7 +44,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('admin.slide.create');
+        return view('admin.clients.create');
     }
 
     /**
@@ -63,20 +56,17 @@ class SlideController extends Controller
     public function store(Request $request)
     {
 
-        $count = Slider::whereTitle($request->title)
+        $count = Client::whereName($request->title)
         ->whereStatus(0)->count();
         if ($count > 0) {
            return response()->json(['status' => 3], 201);
         }
 
         $data =  [
-            'title'         => $request->title,
-            'description'   => $request->description,
-            'status'        => 1,
-            'page'          => $request->page
+            'name'          => $request->name
         ];
 
-        $slide = Slider::create($data);
+        $clients = Client::create($data);
         if ($request->hasFile('image')) {
 
             $file = $request->file('image');
@@ -86,17 +76,14 @@ class SlideController extends Controller
             $upload_img = $image->resize(null, 900, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $upload_img->save(public_path("assets/images/slide/thumb/{$name}"), 80, 'png');
+            $upload_img->save(public_path("assets/images/{$name}"), 80, 'png');
 
-            $file->move('assets/images/slide/',$name);
-
-
-             $slide->update([
+             $clients->update([
                  'image' => $name
              ]);
         }
 
-        if ($slide) {
+        if ($clients) {
             return response()->json(['status' => 1], 201);
           } else {
               return response()->json(['status' => 2], 202);
@@ -122,8 +109,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        $slide = Slider::whereId($id)->first();
-        return response()->json($slide);
+        $clients = Client::whereId($id)->first();
+        return response()->json($clients);
     }
 
     /**
@@ -136,12 +123,9 @@ class SlideController extends Controller
     public function update(Request $request, $id)
     {
 
-        $slide = Slider::whereId($id)->first();
-        $slide->title       = $request->title;
-        $slide->description = $request->description;
-        $slide->page        = $request->page;
-
-        $slide->save();
+        $clients = Client::whereId($id)->first();
+        $clients->name       = $request->name;
+        $clients->save();
 
         if ($request->hasFile('image')) {
 
@@ -152,17 +136,14 @@ class SlideController extends Controller
             $upload_img = $image->resize(null, 900, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $upload_img->save(public_path("assets/images/slide/thumb/{$name}"), 80, 'png');
+            $upload_img->save(public_path("assets/images/{$name}"), 80, 'png');
 
-            $file->move('assets/images/slide/',$name);
-
-
-             $slide->update([
+             $clients->update([
                  'image' => $name
              ]);
         }
 
-        if ($slide) {
+        if ($clients) {
             return response()->json(['status' => 1], 201);
           } else {
               return response()->json(['status' => 2], 202);
@@ -177,11 +158,11 @@ class SlideController extends Controller
      */
     public function destroy($id)
     {
-        $slide = Slider::whereId($id)->first();
-        $slide->status = 0;
-        $slide->save();
+        $clients = Client::whereId($id)->first();
+        $clients->status = 0;
+        $clients->save();
 
-        if ($slide) {
+        if ($clients) {
             return response()->json(['status' => 1], 201);
           } else {
               return response()->json(['status' => 2], 202);

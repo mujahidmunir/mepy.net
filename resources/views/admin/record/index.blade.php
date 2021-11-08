@@ -6,7 +6,6 @@ ADMIN | RECORD
 
 @push('css')
 <link rel="stylesheet" href="{{ asset('admin/css/vendor/dataTable.css') }}">
-
 <style>
     .card {
         /* Add shadows to create the "card" effect */
@@ -83,6 +82,7 @@ ADMIN | RECORD
 @push('js')
 <script src="{{ asset('admin/js/vendor/dataTable.js') }}"></script>
 <script src="{{ asset('admin/js/vendor/table.js') }}"></script>
+
 <script>
     function loadPreview(input, id) {
         id = id || '#preview_img';
@@ -119,7 +119,6 @@ ADMIN | RECORD
     }
 
     $(document).ready(function () {
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -256,12 +255,10 @@ ADMIN | RECORD
                 url: `{{url('admin/record')}}/${id}{{ '/edit' }}`,
                 dataType: "json",
                 success: function (response) {
-
-                    console.log(response);
                     $("#id_edit").val(response.id);
-                    $("#name_edit").val(response.name);
+                    $("#srticle_id_edit").val(response.srticle_id).change();
                     $("#preview_img_edit").attr('src',
-                        `{{ asset('assets/images/gallery/record/') }}/${response.image}`
+                        `{{ asset('assets/images/gallery/record') }}/${response.image}`
                         );
 
                 },

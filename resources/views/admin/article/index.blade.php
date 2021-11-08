@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @push('title')
-ADMIN | CREATIVA
+ADMIN | ARTIKEL
 @endpush
 
 @push('css')
@@ -23,11 +23,11 @@ ADMIN | CREATIVA
 @endpush
 
 @push('breadcrumbs')
-<h1 class="mb-0 pb-0 display-4" id="title">List Creativa</h1>
+<h1 class="mb-0 pb-0 display-4" id="title">List ARTIKEL</h1>
 <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
     <ul class="breadcrumb pt-0">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ url('creativa') }}">Creativa</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('article') }}">ARTIKEL</a></li>
     </ul>
 </nav>
 @endpush
@@ -38,9 +38,9 @@ ADMIN | CREATIVA
     <div class="col-xl-12 mb-6">
         <div class="card">
             <div class="card-body">
-                @include('admin.creativa.create')
+                @include('admin.article.create')
 
-                @include('admin.creativa.edit')
+                @include('admin.article.edit')
             </div>
         </div>
 
@@ -52,19 +52,20 @@ ADMIN | CREATIVA
             <div class="card-body">
 
                 <h5 class="mb-4">
-                    <strong>creativa</strong>
+                    <strong>article</strong>
                 </h5>
 
                 <div class="row">
 
                     <div class="col-lg-12">
                         <div class="mb-5">
-                            <table class="table table-hover nowrap" width="100%" id="tableCreativa">
+                            <table class="table table-hover nowrap" style="width: 100%;" id="tableArticle">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Photo</th>
+                                        <th>Judul</th>
+                                        <th>Deskripsi</th>
+                                        <th>Thumbnail</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -82,8 +83,24 @@ ADMIN | CREATIVA
 
 @push('js')
 <script src="{{ asset('admin/js/vendor/dataTable.js') }}"></script>
+<script src="{{ asset('admin/js/vendor/tableBootstrap.js') }}"></script>
 <script src="{{ asset('admin/js/vendor/table.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script>
+
+   var description = document.getElementById("description");
+     CKEDITOR.replace(description,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+
+   var description_edit = document.getElementById("description_edit");
+     CKEDITOR.replace(description_edit,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+
+
     function loadPreview(input, id) {
         id = id || '#preview_img';
         if (input.files && input.files[0]) {
@@ -155,7 +172,7 @@ ADMIN | CREATIVA
 
             $.ajax({
                 type: "POST",
-                url: "{{ url('admin/creativa') }}",
+                url: "{{ url('admin/article') }}",
                 data: datax,
                 dataType: "json",
                 cache: false,
@@ -166,22 +183,22 @@ ADMIN | CREATIVA
                     $('#simpan-data').html("Simpan");
                     $('#simpan-data').removeAttr('disabled');
                     if (response.status == 1) {
-                        let oTable = $('#tableCreativa').dataTable();
+                        let oTable = $('#tableArticle').dataTable();
                         oTable.fnDraw(false);
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil',
-                            text: 'Berhasil Menambah creativa !',
+                            text: 'Berhasil Menambah article !',
                         });
                     } else if (response.status == 2) {
                         Toast.fire({
                             icon: 'error',
-                            title: 'Gagal Menambah creativa !'
+                            title: 'Gagal Menambah article !'
                         })
                     } else if (response.status == 3) {
                         Toast.fire({
                             icon: 'warning',
-                            title: 'creativa Telah Tersedia !'
+                            title: 'article Telah Tersedia !'
                         })
                     }
                 },
@@ -214,32 +231,32 @@ ADMIN | CREATIVA
                 if (result.value) {
                     $.ajax({
                         type: "DELETE",
-                        url: `{{ url('admin/creativa') }}/${id}`,
+                        url: `{{ url('admin/article') }}/${id}`,
                         data: {
                             _token: '{{csrf_token()}}'
                         },
                         dataType: "json",
                         success: function (response) {
                             if (response.status == 1) {
-                                let oTable = $('#tableCreativa').dataTable();
+                                let oTable = $('#tableArticle').dataTable();
                                 oTable.fnDraw(false);
                                 reset();
                                 Swal.fire({
                                     icon: 'success',
                                     title: 'Berhasil',
-                                    text: 'Berhasil Menghapus creativa !',
+                                    text: 'Berhasil Menghapus article !',
                                 });
                             } else if (response.status == 2) {
                                 Toast.fire({
                                     icon: 'error',
-                                    title: 'Gagal Menghapus creativa !'
+                                    title: 'Gagal Menghapus article !'
                                 })
                             }
                         },
                         error: function () {
                             Toast.fire({
                                 icon: 'error',
-                                title: 'Gagal Menghapus creativa !'
+                                title: 'Gagal Menghapus article !'
                             });
                         }
                     });
@@ -253,15 +270,17 @@ ADMIN | CREATIVA
             let id = $(this).data('id');
             $.ajax({
                 type: "get",
-                url: `{{url('admin/creativa')}}/${id}{{ '/edit' }}`,
+                url: `{{url('admin/article')}}/${id}{{ '/edit' }}`,
                 dataType: "json",
                 success: function (response) {
 
                     console.log(response);
                     $("#id_edit").val(response.id);
-                    $("#srticle_id_edit").val(response.srticle_id).change();
+                    $("#category_id_edit").val(response.category_id).change();
+                    $("#title_edit").val(response.title);
+                    $("#description_edit").val(response.description);
                     $("#preview_img_edit").attr('src',
-                        `{{ asset('assets/images/gallery/creativa/') }}/${response.image}`
+                        `{{ asset('assets/images/thumb/') }}/${response.thumb}`
                         );
 
                 },
@@ -272,7 +291,7 @@ ADMIN | CREATIVA
                     })
                 }
             });
-            $(".modal-title").html("Ubah Data creativa");
+            $(".modal-title").html("Ubah Data article");
         });
         editData();
         function editData()
@@ -289,7 +308,7 @@ ADMIN | CREATIVA
 
             $.ajax({
                 type: "PUT",
-                url: `{{url('admin/creativa')}}/${id}`,
+                url: `{{url('admin/article')}}/${id}`,
                 data: datax,
                 dataType: "json",
                 cache: false,
@@ -301,18 +320,18 @@ ADMIN | CREATIVA
                     $('#simpan-edit').removeAttr('disabled');
                     $("#editData").modal('hide');
                     if (response.status == 1) {
-                        let oTable = $('#tableCreativa').dataTable();
+                        let oTable = $('#tableArticle').dataTable();
                         oTable.fnDraw(false);
                         reset();
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil',
-                            text: 'Berhasil Memperbaharui creativa!',
+                            text: 'Berhasil Memperbaharui article!',
                         });
                     } else if (response.status == 2) {
                         Toast.fire({
                             icon: 'error',
-                            title: 'Gagal Memperbaharui creativa !'
+                            title: 'Gagal Memperbaharui article !'
                         })
                     }
                 },

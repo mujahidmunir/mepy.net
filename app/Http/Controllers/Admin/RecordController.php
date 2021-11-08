@@ -30,13 +30,15 @@ class RecordController extends Controller
                 })
 
                 ->addColumn('image', function($record){
-                    return '<img src="'.url('assets/images/gallery/record/', $record->image).'" class="img-thumbnail" alt="...">';
+                    return '<img src="'.url('assets/images/gallery/record', $record->image).'" class="img-thumbnail" alt="...">';
                 })
 
                 ->rawColumns(['action', 'image'])
                 ->make(true);
         }
-        return view('admin.record.index');
+
+        $data['article'] = $this->getArticleRecord();
+        return view('admin.record.index', $data);
     }
 
     /**
@@ -65,9 +67,7 @@ class RecordController extends Controller
         }
 
         $data =  [
-            'srticle_id' => 2,
-            'name'       => $request->name,
-            'job'        => 0,
+            'srticle_id' => $request->srticle_id,
             'status'     => 1,
             'image'      => 0
         ];
@@ -88,7 +88,7 @@ class RecordController extends Controller
 
 
              $record->update([
-                 'image' => base64_encode($name)
+                 'image' => $name
              ]);
         }
 
@@ -119,6 +119,7 @@ class RecordController extends Controller
     public function edit($id)
     {
         $record = Gallery::whereId($id)->first();
+
         return response()->json($record);
     }
 
@@ -133,7 +134,7 @@ class RecordController extends Controller
     {
 
         $record = Gallery::whereId($id)->first();
-        $record->name = $request->name;
+        $record->srticle_id = $request->srticle_id;
         $record->save();
 
         if ($request->hasFile('image')) {

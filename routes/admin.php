@@ -2,7 +2,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Account\UserController;
+use App\Http\Controllers\Admin\Config\ArticleController;
 use App\Http\Controllers\Admin\Config\CategoriesController;
+use App\Http\Controllers\Admin\Config\ClientController;
 use App\Http\Controllers\Admin\Config\ContactusController;
 use App\Http\Controllers\Admin\Config\SlideController;
 use App\Http\Controllers\Admin\CreativaController;
@@ -22,7 +24,8 @@ Route::group(['middleware' => ['auth:web','role:admin|super_admin'], 'prefix' =>
         'user'          => UserController::class,
         'slide'         => SlideController::class,
         'categories'    => CategoriesController::class,
-
+        'clients'       => ClientController::class,
+        'article'       => ArticleController::class,
     ]);
 
 });

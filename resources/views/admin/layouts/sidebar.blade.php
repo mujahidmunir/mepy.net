@@ -33,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="#website" class="{{ request()->is('admin/contactus') || request()->is('admin/slide') || request()->is('admin/categories') || request()->is('articles') || request()->is('clients')? 'active' : '' }}">
+            <a href="#website" class="{{ request()->is('admin/article') || request()->is('admin/contactus') || request()->is('admin/slide') || request()->is('admin/categories') || request()->is('articles') || request()->is('clients')? 'active' : '' }}">
                 <i class="fas fa-cog"></i>
                 <span class="label">Config</span>
             </a>
@@ -54,13 +54,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/articles') }}" class="{{ request()->is('admin/articles') ? 'active' : '' }}">
-                       <span class="label">Articles</span>
+                    <a href="{{ url('admin/clients') }}" class="{{ request()->is('admin/clients') ? 'active' : '' }}">
+                       <span class="label">Clients</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('admin/clients') }}" class="{{ request()->is('admin/clients') ? 'active' : '' }}">
-                       <span class="label">Clients</span>
+                    <a href="{{ url('admin/article') }}" class="{{ request()->is('admin/article') ? 'active' : '' }}">
+                       <span class="label">Article</span>
                     </a>
                 </li>
 
