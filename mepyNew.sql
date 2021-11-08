@@ -11,7 +11,7 @@
  Target Server Version : 100421
  File Encoding         : 65001
 
- Date: 03/11/2021 16:38:40
+ Date: 08/11/2021 13:14:45
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `articles`  (
 -- ----------------------------
 INSERT INTO `articles` VALUES (1, 1, 'Mepy.ENT', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
 INSERT INTO `articles` VALUES (2, 2, 'Mepy Record', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
-INSERT INTO `articles` VALUES (3, 3, 'Mepy Creativa', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
+INSERT INTO `articles` VALUES (3, 3, 'Mepy Creativa', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.png', 1, NULL, NULL);
 INSERT INTO `articles` VALUES (4, 4, 'Mepy Talent Management', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
 INSERT INTO `articles` VALUES (5, 5, 'Mepy Entertainment', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
 INSERT INTO `articles` VALUES (6, 2, 'Pop', 'The standard Lorem Ipsum passage, used since the 1500s \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\" Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC \"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam', 'image-1.jpg', 1, NULL, NULL);
@@ -143,28 +143,33 @@ CREATE TABLE `galleries`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of galleries
 -- ----------------------------
-INSERT INTO `galleries` VALUES (1, 4, 'Penyanyi', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (2, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (3, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (4, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (5, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (6, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (7, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (8, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (9, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (10, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (11, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (12, 4, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (13, 2, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (18, 2, '0', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (19, 2, '0', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (20, 5, '0', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-INSERT INTO `galleries` VALUES (21, 5, '0', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (1, 4, 'image-1.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (2, 4, 'image-2.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (3, 4, 'image-3.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (4, 4, 'image-4.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (5, 4, 'image-5.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (6, 4, 'image-6.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (7, 4, 'image-7.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (8, 4, 'image-8.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (9, 4, 'image-9.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (10, 4, 'image-10.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (11, 4, 'image-11.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (12, 4, 'image-12.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (13, 2, '-', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (18, 2, '-', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (19, 2, '-', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (20, 5, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (21, 5, '-', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `galleries` VALUES (22, 6, '-', 1, NULL, NULL);
+INSERT INTO `galleries` VALUES (23, 7, '-', 1, NULL, NULL);
+INSERT INTO `galleries` VALUES (24, 8, '-', 1, NULL, NULL);
+INSERT INTO `galleries` VALUES (25, 6, '-', 1, NULL, NULL);
+INSERT INTO `galleries` VALUES (26, 3, '-', 1, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -370,6 +375,26 @@ INSERT INTO `users` VALUES (1, 'super admin', 'superadmin@gmail.com', NULL, '$2y
 INSERT INTO `users` VALUES (2, 'admin', 'admin@gmail.com', NULL, '$2y$10$3f7Q9bwLWhwCExiOE1JshOpbf/qvQQWzuEKYyk98cCCpPRhauhRiy', NULL, NULL, NULL);
 
 -- ----------------------------
+-- View structure for v_articles
+-- ----------------------------
+DROP VIEW IF EXISTS `v_articles`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `v_articles` AS SELECT
+	articles.id, 
+	articles.category_id, 
+	articles.title, 
+	articles.description, 
+	articles.thumb, 
+	articles.`status`
+FROM
+	articles
+	INNER JOIN
+	categories
+	ON 
+		articles.category_id = categories.id 
+		
+		WHERE articles.status = 1 ;
+
+-- ----------------------------
 -- View structure for v_categories
 -- ----------------------------
 DROP VIEW IF EXISTS `v_categories`;
@@ -377,6 +402,17 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `v_categories` AS SELECT
 	*
 FROM
 	categories ;
+
+-- ----------------------------
+-- View structure for v_clients
+-- ----------------------------
+DROP VIEW IF EXISTS `v_clients`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `v_clients` AS SELECT
+	*
+FROM
+	clients 
+	
+	WHERE status = 1 ;
 
 -- ----------------------------
 -- View structure for v_creativa
@@ -388,7 +424,8 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `v_creativa` AS SELECT
 	galleries.`status`, 
 	articles.title, 
 	articles.description, 
-	galleries.srticle_id
+	galleries.srticle_id, 
+	articles.thumb
 FROM
 	articles
 	INNER JOIN
